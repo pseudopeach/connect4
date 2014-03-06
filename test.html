@@ -4,9 +4,29 @@
 	<title>Test Harness</title>	
 </head>
 <body>
+	<h1>Test Results</h1>
+	<h2 id="overallResult">
+		
+	</h2>
+	<table id="resTab">
+		<tr>
+			<th>Name</th>
+			<th>Result</th>
+			<th>Error</th>
+		</tr>
+	</table>
 	
+<script src="jquery-1.9.1.min.js"></script>	
+<script src="test.js"></script>	
 <script>
-	
+	var results = runTests();
+	var allpass = true;
+	for(var i=0;i<results.length;i++){
+		var str = results[i].passed ? "Passed" : "FAILED";
+		allpass = allpass && results[i].passed;
+		$("#resTab").append("<tr><td>"+results[i].name+"</td><td>"+str+"</td><td>"+results[i].error+"</td></tr>");
+	}
+	$("#overallResult").text(allpass ? "Passed" : "FAILED");
 </script>
 </body>
 </html>

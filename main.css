@@ -1,24 +1,45 @@
-body, button{
+body{
 	background:#eeeeee;
 	font-family: 'poetsenoneregular';
 }
+button{font-family: 'poetsenoneregular';}
+
+h1{
+	text-align:center;
+	margin:0px;
+	font-size: 48px;
+}
+
+h2{
+	margin: 10px 15px;
+	font-size: 24px;
+}
 
 #center{
-	margin:50px auto;
-	width:1024px;
+	margin:0px auto;
+	width:800px;
 }
 
 #board{
+	position:relative;
 	overflow:hidden;
+	height:625px;
+	padding-left:30px;
 }
 
 #columnButtons{
 	position:absolute;
+	height:570px;
+	width:770px;
+	padding-left:30px;
+	top:50px;
+	left:0px;
+	background:url('assets/board.png') no-repeat;
 }
 
 #columnButtons button{
-	width:50px;
-	height:400px;
+	width:106px;
+	height:100%;
 	display:block;
 	float:left;
 	background:rgba(0,0,0,0.01);
@@ -28,26 +49,27 @@ body, button{
 
 .stack {
 	position:relative;
-	width:50px;
-	height:400px;
+	width:106px;
+	height:100%;
 	margin:0px 0px 20px 0px;
 	float:left;
-	background:#d0d0d0;
 }
 
 .chip{
-	width:50px;
-	height:50px;
-	background:#ff0000;
+	width:75px;
+	height:75px;
+	margin-left:15px;
+	background:url('assets/chip_red.png') no-repeat;
 	float:left;
 	position:absolute;
 	
 }
 
-.chip.yellow {background:#ffff00;}
+.chip.yellow {background:url('assets/chip_yellow.png') no-repeat;}
 
 #banner{
 	position:relative;
+	
 	background:#294ad1;
 	height:50px;
 	border:#1445b3 5px solid;
@@ -55,19 +77,22 @@ body, button{
 #banner h2{color:white;}
 #banner button{
 	position:absolute;
-	right:30px;top:20px;
+	right:14px;top:10px;
 	color:white;
 	background-color:rgba(255,255,255,0.3);
 	border:0px;	
+	font-size:18px;
 }
 #banner button:hover{background-color:rgba(255,255,255,0.4)}
+#banner button:disabled{background-color:rgba(255,0,0,0.01)}
 
 #splash{
 	display:none;
 	position:absolute;
-	width:1024px;
+	top:0px;
+	width:100%;
 	height:100%;
-	background-color:rgba(0,0,0,0.2);
+	background-color:rgba(0,0,0,0.8);
 }
 #splash h1 {
 	color:red;

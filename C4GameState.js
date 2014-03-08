@@ -24,7 +24,9 @@ function C4GameState(nstacks, depth){
 ///Adds a chip to the board at the top of stack [stackIndex]. Returns true if the move was committed.
 C4GameState.prototype.move = function(stackIndex){
 	console.log("adding chip at:"+stackIndex);
+	
 	//validation
+	if(gameWinner) return false;
 	if(stackIndex >= this.stacks.length || stackIndex < 0)
 		return false;
 	var stack = this.stacks[stackIndex];
@@ -129,7 +131,7 @@ C4GameState.prototype.reset = function(){
 	gameWinner = null;
 	
 	this.publish(C4GameState.RESET);
-	this.publish(C4GameState.STACKS_UPDATE);
+	this.publish(C4GameState.STACKS_UPDATE, this.openStacks());
 	this.publish(C4GameState.PLAYER_TURN);
 }
 

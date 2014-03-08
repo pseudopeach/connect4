@@ -2,7 +2,7 @@ function addChip(color, slot){
 	var stack = $("#board .stack").get(slot);
 	var chip = $("<div/>").addClass("chip");
 	
-	var finalHeight = stack.children.length*50;
+	var finalHeight = stack.children.length*95 + 18;
 	console.log("final height:"+finalHeight);
 	
 	chip.addClass(color);
@@ -50,7 +50,7 @@ function announceResult(game){
 	$("#splash h1").text(splashMessage);
 	$("#splash h1").css({color:playerInfo.textColor});
 	$("#splash h1").css({'margin-top':-200});
-	$("#splash h1").delay(400).animate({'margin-top':300});
+	$("#splash h1").delay(400).animate({'margin-top':350});
 	
 }
 
@@ -69,6 +69,11 @@ function makeClickHandler(game, i){
 
 $(document).ready(function(){
 	var game = new C4GameState(7,6);
+	game.players = [
+		{name:"Player 1", colorClass:"red", textColor:"#d34757"},
+		{name:"Player 2", colorClass:"yellow", textColor:"#ffff00"}
+	];
+	
 	game.subscribe(C4GameState.CHIP_ADDED, function(e){ addChip(e.chipColor, e.slotId); });
 	game.subscribe(C4GameState.RESET, function(e){ clearBoard(); });
 	game.subscribe(C4GameState.GAME_OVER, function(e){ announceResult(this); });

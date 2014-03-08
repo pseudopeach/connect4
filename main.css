@@ -1,0 +1,75 @@
+body{
+	background:#eeeeee;
+}
+
+#center{
+	margin:50px auto;
+	width:1024px;
+}
+
+#board{
+	overflow:hidden;
+}
+
+#columnButtons{
+	position:absolute;
+}
+
+#columnButtons button{
+	width:50px;
+	height:400px;
+	display:block;
+	float:left;
+	background:rgba(0,0,0,0.01);
+	border:0px;
+}
+#columnButtons button:hover{background:rgba(0,0,0,0.10);}
+
+.stack {
+	position:relative;
+	width:50px;
+	height:400px;
+	margin:0px 0px 20px 0px;
+	float:left;
+	background:#d0d0d0;
+}
+
+.chip{
+	width:50px;
+	height:50px;
+	background:#ff0000;
+	float:left;
+	position:absolute;
+	
+}
+
+.chip.yellow {background:#ffff00;}
+
+#banner{
+	position:relative;
+	background:#294ad1;
+	height:50px;
+	border:#1445b3 5px solid;
+}
+#banner h2{color:white;}
+#banner button{
+	position:absolute;
+	right:30px;top:20px;
+	color:white;
+	background-color:rgba(255,255,255,0.3);
+	border:0px;	
+}
+#banner button:hover{background-color:rgba(255,255,255,0.4)}
+
+#splash{
+	display:none;
+	position:absolute;
+	width:1024px;
+	height:100%;
+	background-color:rgba(0,0,0,0.2);
+}
+#splash h1 {
+	color:red;
+	margin:300px auto;
+	text-align: center;
+}

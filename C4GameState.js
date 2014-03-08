@@ -15,16 +15,17 @@ function C4GameState(nstacks, depth){
 		this.stacks.push([]);
 	
 	this.players = [
-		{name:"Player 1", color:"#ff0000"},
-		{name:"Player 2", color:"#ffff00"}
+		{name:"Player 1", colorClass:"red", textColor:"#ff0000"},
+		{name:"Player 2", colorClass:"yellow", textColor:"#ffff00"}
 	];
 	stackDepth = depth;
 }
 
 ///Adds a chip to the board at the top of stack [stackIndex]. Returns true if the move was committed.
 C4GameState.prototype.move = function(stackIndex){
+	console.log("adding chip at:"+stackIndex);
 	//validation
-	if(stackIndex > this.stacks.length || stackIndex < 0)
+	if(stackIndex >= this.stacks.length || stackIndex < 0)
 		return false;
 	var stack = this.stacks[stackIndex];
 	if(stack.length >= stackDepth)
@@ -33,6 +34,7 @@ C4GameState.prototype.move = function(stackIndex){
 	//actual move	
 	var tt = this.currentTurnTaker();
 	stack.push(tt);
+	this.publish(C4GameState.CHIP_ADDED, {chipColor:tt.colorClass, slotId:stackIndex});
 	
 	//aftermath
 	var winner;
@@ -127,6 +129,8 @@ C4GameState.prototype.reset = function(){
 	gameWinner = null;
 	
 	this.publish(C4GameState.RESET);
+	this.publish(C4GameState.STACKS_UPDATE);
+	this.publish(C4GameState.PLAYER_TURN);
 }
 
 /// Forces a specific configuration of chips into the board.

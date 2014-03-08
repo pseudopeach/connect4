@@ -2,55 +2,53 @@
 <html>
 <head>
 	<title>Connect Four</title>	
+	<link rel="stylesheet" type="text/css" href="main.css"/>
 </head>
 
 <body>
+<div id="center">
 	<div id="board">
 		<div class="stack">
-			
 		</div>
+		
+		<div class="stack">	
+		</div>
+		
 		<div class="stack">
-			
 		</div>
+		
 		<div class="stack">
-			
 		</div>
+		
 		<div class="stack">
-			
 		</div>
+		
 		<div class="stack">
-			
 		</div>
-	</div>
+		
+		<div class="stack">
+		</div>
 	
-	<div id="columnButtons">
-		<button id="col_btn_0">
-		</button>
-		<button id="col_btn_1">
-		</button>
-		<button id="col_btn_2">
-		</button>
-		<button id="col_btn_3">
-		</button>
-		<button id="col_btn_4">
-		</button>
-		<button id="col_btn_5">
-		</button>
-		<button id="col_btn_6">
-		</button>
-	</div>
-	
-	<div id="banner">
-		<div id="message">
+		<div id="columnButtons">
 		</div>
-		<button>Start Over</button>
-	</div>
-	
-	<div id="splash">
+		
+		<div id="splash">
+			<h1 >Player 2 Wins!!!</h1>
+		</div>
 		
 	</div>
 	
+	<div id="banner">
+		<button id="resetButton">Start Over</button>
+		<h2 id="message">Click a column to move</h2>
+		
+	</div>
+	
+	
+</div>
+	
 <script src="jquery-1.9.1.min.js"></script>
+<script src="C4GameState.js"></script>
 <script src="board.js"></script>
 
 </body>

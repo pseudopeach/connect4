@@ -43,17 +43,17 @@ var tests = [
 }},
 
 {name:"d1 win", fn:function(){
-	var gameW1 = new C4GameState(7,4);
-	gameW1.forceState([
+	var g = new C4GameState(7,4);
+	g.forceState([
 		"ryyr",
 		"yryy",
 		"ryry",
 		"rry",
 		"r"
 	]);
-	gameW1.move(3);
-	var wi = gameW1.winner();
-	return wi && wi.name == gameW1.players[0].name;
+	g.move(3);
+	var wi = g.winner();
+	return wi && wi.name == g.players[0].name;
 }},
 
 {name:"d2 win", fn:function(){
@@ -70,6 +70,20 @@ var tests = [
 	gameW1.move(1);
 	var wi = gameW1.winner();
 	return wi && wi.name == gameW1.players[1].name;
+}},
+
+{name:"mid win", fn:function(){
+	var g = new C4GameState(7,4);
+	g.forceState([
+		"ry",
+		"",
+		"ry",
+		"ry",
+		
+	]);
+	g.move(1);
+	var wi = g.winner();
+	return wi && wi.name == g.players[0].name;
 }},
 
 {name:"reset", fn:function(){

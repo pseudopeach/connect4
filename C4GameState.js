@@ -150,7 +150,7 @@ C4GameState.prototype.reset = function(){
 	this.gameWinner = null;
 	
 	this.publish(C4GameState.RESET);
-	this.publish(C4GameState.STACKS_UPDATE, this.openStacks());
+	//this.publish(C4GameState.STACKS_UPDATE, this.openStacks());
 	this.publish(C4GameState.PLAYER_TURN);
 }
 

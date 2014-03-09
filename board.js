@@ -16,7 +16,7 @@ function addChip(color, slot){
 
 ///empties a single stack of chips in an animation
 function emptyStack(stack, button){
-	$(button).prop("disabled","disabled");
+	$(button).prop("disabled",true);
 	var childs = $(stack).children();
 	for(var i=0;i<childs.length;i++){
 		if(i < childs.length-1)

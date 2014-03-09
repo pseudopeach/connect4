@@ -20,9 +20,9 @@ function emptyStack(stack, button){
 	var childs = $(stack).children();
 	for(var i=0;i<childs.length;i++){
 		if(i < childs.length-1)
-			$(childs[i]).delay(100*i+Math.random(10)).animate({bottom:-500},600);
+			$(childs[i]).delay(100*i+Math.random()*300).animate({bottom:-500},600);
 		else
-			$(childs[i]).delay(100*i+11).animate({bottom:-500},600,function(){
+			$(childs[i]).delay(100*i+400).animate({bottom:-500},600,function(){
 				$(stack).empty();
 				$(button).prop("disabled",null); //re-enable button after animation finishes
 			});

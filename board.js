@@ -13,20 +13,25 @@ function addChip(color, slot){
 	//$(".stack").append(chip);
 }
 
-function emptyStack(stack, n){
+function emptyStack(stack, button){
+	$(button).prop("disabled","disabled");
 	var childs = $(stack).children();
 	for(var i=0;i<childs.length;i++){
 		if(i < childs.length-1)
-			$(childs[i]).delay(100*i).animate({bottom:-500},600);
+			$(childs[i]).delay(100*i+Math.random(10)).animate({bottom:-500},600);
 		else
-			$(childs[i]).delay(100*i).animate({bottom:-500},600,function(){
+			$(childs[i]).delay(100*i+11).animate({bottom:-500},600,function(){
 				$(stack).empty();
+				$(button).prop("disabled",null); //re-enable button after animation finishes
 			});
 	}
 }
 
 function clearBoard(e){
-	$("#board .stack").each(function(){emptyStack(this);});
+	var stacks = $("#board .stack");
+	var buttons = $("#columnButtons button");
+	for(var i=0;i<stacks.length;i++)
+		emptyStack(stacks[i], buttons[i]);
 }
 
 function showTurnPrompt(game){
@@ -54,7 +59,11 @@ function announceResult(game){
 	
 }
 
-function setButtonStates(game, openStacks){
+function setButtonStates(openStacks){
+	if(!openStacks.hasOwnProperty("length")){
+		$("#columnButtons button").prop("disabled",openStacks ? null : "disabled");
+		return;
+	}
 	var buttons = $("#columnButtons button");
 	for(var i=0;i<openStacks.length;i++){
 		$(buttons[i]).prop("disabled",openStacks[i] ? null : "disabled");
@@ -78,7 +87,7 @@ $(document).ready(function(){
 	game.subscribe(C4GameState.RESET, function(e){ clearBoard(); });
 	game.subscribe(C4GameState.GAME_OVER, function(e){ announceResult(this); });
 	game.subscribe(C4GameState.PLAYER_TURN, function(e){ showTurnPrompt(this); });
-	game.subscribe(C4GameState.STACKS_UPDATE, function(e){ setButtonStates(this,e); });
+	game.subscribe(C4GameState.STACKS_UPDATE, function(e){ setButtonStates(e); });
 	
 	//var buttons = $("#columnButtons button");
 	for(var i=0;i<game.stacks.length;i++){
